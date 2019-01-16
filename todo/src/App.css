@@ -17,6 +17,6 @@ ul li {
   padding: 0;
 }
 
-ul li.striked {
+.striked {
   text-decoration: line-through;
 }

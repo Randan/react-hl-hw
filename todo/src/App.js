@@ -19,24 +19,30 @@ class App extends React.Component {
     }
 
     onSubmit = () => {
-        const  {value, list} = this.state;
+        const {value, list} = this.state;
+        const newListItem = {
+            name: value,
+            done: false,
+            id: Date.now()
+        };
 
-        value && !list && this.setState({
-            list: [value]
-        });
-        value && list && this.setState({
-            list: [...list, value]
-        });
+        value && !list && this.setState({list: [newListItem]});
+        value && list && this.setState({list: [...list, newListItem]});
 
-        this.setState({
-            value: ''
-        });
+        this.setState({value: ''});
         document.getElementById('todo-input').value = '';
+    }
+
+    removeItem = (id) => {
+        const {list} = this.state;
+
+        list.splice(list.findIndex(obj => obj.id === id), 1);
+        this.setState({list});
     }
 
     render() {
         const {list} = this.state;
-        const {onChange, onSubmit} = this;
+        const {onChange, onSubmit, removeItem} = this;
 
         return (
             <div className="App">
@@ -48,7 +54,10 @@ class App extends React.Component {
                     {list && list.map((item, i) =>
                         <ListItem
                             key={i}
-                            data={item}
+                            id={item.id}
+                            data={item.name}
+                            done={item.done}
+                            removeItem={removeItem}
                         />
                     )}
                 </ul>

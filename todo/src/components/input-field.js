@@ -2,16 +2,7 @@ import React from 'react'
 
 class InputField extends React.Component {
 
-    constructor (props) {
-        super(props);
-        this.state = {
-            // value = this.props.value;
-        }
-    }
-
-    pushProps = (e) => {
-        this.props.onChange(e.target.value);
-    }
+    pushProps = (e) => this.props.onChange(e.target.value);
 
     handleAddItem = (e) => {
         e.preventDefault();
@@ -19,7 +10,7 @@ class InputField extends React.Component {
     }
 
     render() {
-        const  {props, pushProps, handleAddItem} = this;
+        const {props, pushProps, handleAddItem} = this;
 
         return (
             <form

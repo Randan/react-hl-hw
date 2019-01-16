@@ -41,18 +41,18 @@ class App extends React.Component {
 
         return (
             <div className="App">
-            <InputField 
-                onChange={onChange}
-                onSubmit={onSubmit}
-            />
-            <ul>
-                {list && list.map((item, i) =>
-                    <ListItem
-                        key={i}
-                        data={item}
-                    />
-                )}
-            </ul>
+                <InputField 
+                    onChange={onChange}
+                    onSubmit={onSubmit}
+                />
+                <ul>
+                    {list && list.map((item, i) =>
+                        <ListItem
+                            key={i}
+                            data={item}
+                        />
+                    )}
+                </ul>
             </div>
         );
     }

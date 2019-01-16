@@ -1,45 +1,42 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export class InputField extends Component {
+class InputField extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            value: ''
-        }
+        this.pushProps = this.pushProps.bind(this);
+        this.handleAddItem = this.handleAddItem.bind(this);
     }
 
-    onChange = ({target: {value}}) => {
-        this.setState({value});
+    pushProps = (e) => {
+        this.props.onChange(e.target.value);
     }
 
-    addItem = () => {
-        const  {value, list} = this.state;
-        
-        value && !list && this.setState({
-            list: [value]
-        }); // TODO: make it GLOBAL
-        value && list && this.setState({
-            list: [...list, value]
-        }); // TODO: make it GLOBAL
-        this.setState({
-            value: ''
-        });
+    handleAddItem = (e) => {
+        e.preventDefault();
+        this.props.onSubmit();
     }
 
     render() {
-        const  {state, addItem, onChange} = this;
+        const  {props, pushProps, handleAddItem} = this;
         return (
-            <div>
+            <form
+                onSubmit={handleAddItem}
+            >
                 <input 
+                    name="input"
                     type="text"
-                    value={state.value}
-                    onChange={onChange}
+                    value={props.value}
+                    onChange={pushProps}
                 />
-                <button
-                    onClick={addItem}
-                >Add</button>
-            </div>
+                <input
+                    type="submit"
+                    value="Add"
+                />
+            </form>
         );
     }
+    
 }
+
+export default InputField;

@@ -1,20 +1,20 @@
 import React from 'react';
 
-export class ListItem extends React.Component {
+class ListItem extends React.Component {
 
-    constructor (props) {
-        super(props)
-        this.state = {
+    removeItem = () => {}
     
-        }
-    }
+    check = () => {}
 
     render() {
-        const {removeItem} = this;
+        const {removeItem, check} = this;
         
         return (
             <li>
-                <input type="checkbox" />
+                <input 
+                    type="checkbox"
+                    onChange={check}
+                />
                 {this.props.data}
                 <button
                     onClick={removeItem}   
@@ -24,3 +24,5 @@ export class ListItem extends React.Component {
     }
 
 }
+
+export default ListItem;

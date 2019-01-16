@@ -12,9 +12,6 @@ class App extends React.Component {
             list: null,
             value: ''
         }
-
-        this.onChange = this.onChange.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
     }
 
     onChange = (value) => {
@@ -30,9 +27,11 @@ class App extends React.Component {
         value && list && this.setState({
             list: [...list, value]
         });
+
         this.setState({
             value: ''
         });
+        document.getElementById('todo-input').value = '';
     }
 
     render() {

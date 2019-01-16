@@ -2,10 +2,11 @@ import React from 'react'
 
 class InputField extends React.Component {
 
-    constructor(props) {
+    constructor (props) {
         super(props);
-        this.pushProps = this.pushProps.bind(this);
-        this.handleAddItem = this.handleAddItem.bind(this);
+        this.state = {
+            // value = this.props.value;
+        }
     }
 
     pushProps = (e) => {
@@ -19,6 +20,7 @@ class InputField extends React.Component {
 
     render() {
         const  {props, pushProps, handleAddItem} = this;
+
         return (
             <form
                 onSubmit={handleAddItem}
@@ -26,6 +28,7 @@ class InputField extends React.Component {
                 <input 
                     name="input"
                     type="text"
+                    id="todo-input"
                     value={props.value}
                     onChange={pushProps}
                 />
@@ -36,7 +39,7 @@ class InputField extends React.Component {
             </form>
         );
     }
-    
+
 }
 
 export default InputField;

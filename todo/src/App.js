@@ -14,9 +14,11 @@ class App extends React.Component {
         }
     }
 
-    onChange = (value) => {
-        this.setState({value});
-    }
+    componentDidMount = () => console.log('App.js', 'componentDidMount');
+    componentDidUpdate = () => console.log('App.js', 'componentDidUpdate');
+    componentWillUnmount = () => console.log('App.js', 'componentWillUnmount');
+
+    onChange = (value) => this.setState({value});
 
     onSubmit = () => {
         const {value, list} = this.state;
@@ -44,23 +46,32 @@ class App extends React.Component {
         const {list} = this.state;
         const {onChange, onSubmit, removeItem} = this;
 
+        /**
+         * console.log() 'cause render message elements
+         * about render elements to DOM will trigger
+         * componentDidUpdate() which will lead to a loop
+         */
+        console.log('App.js', 'render');
+
         return (
             <div className="App">
-                <InputField 
-                    onChange={onChange}
-                    onSubmit={onSubmit}
-                />
-                <ul>
-                    {list && list.map((item, i) =>
-                        <ListItem
-                            key={i}
-                            id={item.id}
-                            data={item.name}
-                            done={item.done}
-                            removeItem={removeItem}
-                        />
-                    )}
-                </ul>
+                <div>
+                    <InputField 
+                        onChange={onChange}
+                        onSubmit={onSubmit}
+                    />
+                    <ul>
+                        {list && list.map((item, i) =>
+                            <ListItem
+                                key={i}
+                                id={item.id}
+                                data={item.name}
+                                done={item.done}
+                                removeItem={removeItem}
+                            />
+                        )}
+                    </ul>
+                </div>
             </div>
         );
     }

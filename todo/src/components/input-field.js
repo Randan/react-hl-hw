@@ -2,6 +2,10 @@ import React from 'react'
 
 class InputField extends React.Component {
 
+    componentDidMount = () => console.log('Input-field.js', 'componentDidMount');
+    componentDidUpdate = () => console.log('Input-field.js', 'componentDidUpdate');
+    componentWillUnmount = () => console.log('Input-field.js', 'componentWillUnmount');
+
     pushProps = (e) => this.props.onChange(e.target.value);
 
     handleAddItem = (e) => {
@@ -11,6 +15,8 @@ class InputField extends React.Component {
 
     render() {
         const {props, pushProps, handleAddItem} = this;
+
+        console.log('Input-field.js', 'render');
 
         return (
             <form

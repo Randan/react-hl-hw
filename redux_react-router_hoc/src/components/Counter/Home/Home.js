@@ -4,9 +4,8 @@ import { store } from '../store';
 import UserInput from '../UserInput';
 
 export default () => (
-  <div>
     <Provider store={store}>
-      <UserInput />
+        <UserInput />
+        <p>This is Home Page</p>
     </Provider>
-  </div>
 );

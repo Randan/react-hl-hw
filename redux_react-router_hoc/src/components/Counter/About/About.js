@@ -1,7 +1,11 @@
 import React from 'react';
+import Provider from 'react-redux/es/components/Provider';
+import { store } from '../store';
+import InputField from '../UserInput/parts/InputField';
 
 export default () => (
-  <div>
-    About page
-  </div>
+    <Provider store={store}>
+        <InputField />
+        <p>This is About Page</p>
+    </Provider>
 );

@@ -1,20 +1,12 @@
 import React from 'react';
+import DecrementButton from './parts/DecrementButton';
+import InputField from './parts/InputField';
+import IncrementButton from './parts/IncrementButton';
 
 export default (props) => (
     <div>
-        <button
-            onClick={props.handleDecrement}
-        >
-            -
-        </button>
-        <input 
-            type="number"
-            onChange={props.handleInputChange} 
-        />
-        <button
-            onClick={props.handleIncrement}
-        >
-            +
-        </button>
+        <DecrementButton />
+        <InputField />
+        <IncrementButton />
     </div>
 );

@@ -17,18 +17,18 @@ class ItemActions extends Component {
   };
 
   renderCartButton = () => {
-    const { id } = this.props;
+    const { id, addToCart, removeFromCart } = this.props;
     const inCart = this.inCart(id);
 
     if (inCart) {
       return (
-        <button onClick={() => console.log(id)}>
+        <button onClick={() => removeFromCart(id)}>
           <img src={cartIconAdded} alt="cart icon added"/>
         </button>
       );
     } else {
       return (
-        <button onClick={() => console.log(id)}>
+        <button onClick={() => addToCart(id)}>
           <img src={cartIcon} alt="cart icon"/>
         </button>
       );

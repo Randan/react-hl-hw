@@ -8,6 +8,9 @@ import { watchItemsFetch } from './sagas/shop/fetchItems';
 import { watchAddingToFavorites } from './sagas/shop/addToFavorites';
 import { notificateFavorite } from './sagas/notifications/watchFavorites';
 import { watchRemovingFromFavorites } from './sagas/shop/removeFromFavorites';
+import { watchAddingToCart } from './sagas/shop/addToCart';
+import { notificateCart } from './sagas/notifications/watchCart';
+import { watchRemovingFromCart } from './sagas/shop/removeFromCart';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -21,7 +24,10 @@ function* rootSaga() {
     watchItemsFetch(),
     watchAddingToFavorites(),
     notificateFavorite(),
-    watchRemovingFromFavorites()
+    watchRemovingFromFavorites(),
+    watchAddingToCart(),
+    notificateCart(),
+    watchRemovingFromCart()
   ]);
 }
 
